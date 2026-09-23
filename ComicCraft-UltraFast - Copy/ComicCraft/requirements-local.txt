@@ -1,6 +1,0 @@
-# Optional local Stable Diffusion backend. Not needed for the default fast HF backend.
-diffusers==0.40.0
-transformers==5.17.0
-accelerate==1.10.1
-safetensors>=0.8.0
-torch>=2.4.0
