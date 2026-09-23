@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}Create a Comic · ComicCraft{% endblock %}
+{% block content %}
+<section class="hero">
+  <p class="eyebrow">FROM IDEA TO COMIC</p>
+  <h1>Turn your imagination into a fast AI comic.</h1>
+  <p class="subtitle">Describe your idea, choose the mood and art direction, and ComicCraft will build the story and illustrations.</p>
+</section>
+
+{% if error %}
+<div class="alert">{{ error }}</div>
+{% endif %}
+
+<form class="card form-grid" action="/generate" method="post" onsubmit="showLoading()">
+  <label class="full">
+    Story Prompt
+    <textarea name="story_prompt" rows="5" required maxlength="2000" placeholder="A brave fox exploring an enchanted forest..."></textarea>
+  </label>
+
+  <label>
+    Main Character Name
+    <input name="character_name" required maxlength="80" placeholder="Fenn">
+  </label>
+
+  <label>
+    Setting
+    <select name="setting">
+      <option>enchanted forest</option>
+      <option>school</option>
+      <option>futuristic city</option>
+      <option>outer space</option>
+      <option>mysterious island</option>
+    </select>
+  </label>
+
+  <label>
+    Story Tone
+    <select name="tone">
+      <option>light-hearted</option>
+      <option>dramatic</option>
+      <option>poetic</option>
+      <option>funny</option>
+      <option>adventurous</option>
+    </select>
+  </label>
+
+  <label>
+    Art Style
+    <select name="art_style">
+      <option>comic book</option>
+      <option>anime</option>
+      <option>pixel art</option>
+      <option>realistic</option>
+      <option>watercolor illustration</option>
+    </select>
+  </label>
+
+  <button id="generate-button" class="button full" type="submit">Create My Comic</button>
+  <p id="loading" class="loading full" hidden>⚡ Fast mode: generating story + 4 illustrations in parallel…</p>
+</form>
+{% endblock %}
